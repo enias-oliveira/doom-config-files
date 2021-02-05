@@ -99,6 +99,8 @@
   :config
   (setq-default flycheck-disabled-checkers '(python-pylint)))
 
+(set! :company-backend 'python-mode '(company-anaconda))
+
 ;; ;; Background Transparent
 ;; (set-frame-parameter (selected-frame) 'alpha '(92 . 90))
 ;; (add-to-list 'default-frame-alist '(alpha . (92 . 90)))
