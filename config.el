@@ -19,8 +19,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "JetBrainsMono" :size 14 :weight 'medium)
-      doom-variable-pitch-font (font-spec :family "JetBrainsMono" :size 16))
+(setq doom-font (font-spec :family "JetBrainsMono" :size 15 :weight 'medium)
+      doom-variable-pitch-font (font-spec :family "JetBrainsMono" :size 17))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -82,7 +82,7 @@
                               ("png" . "sxiv")
                               ("mkv" . "mpv")
                               ("mp4" . "mpv")))
-(after! neotree
+(after! neotrej
   (setq neo-smart-open t
         neo-window-fixed-size nil))
 (after! doom-themes
@@ -98,32 +98,3 @@
 (use-package flycheck
   :config
   (setq-default flycheck-disabled-checkers '(python-pylint)))
-
-;;(set! :company-backend 'python-mode '(company-anaconda))
-
-;; ;; Background Transparent
-;; (set-frame-parameter (selected-frame) 'alpha '(92 . 90))
-;; (add-to-list 'default-frame-alist '(alpha . (92 . 90)))
-(defconst jetbrains-ligature-mode--ligatures
-   '("-->" "//" "/**" "/*" "*/" "<!--" ":=" "->>" "<<-" "->" "<-"
-     "<=>" "==" "!=" "<=" ">=" "=:=" "!==" "&&" "||" "..." ".."
-     "|||" "///" "&&&" "===" "++" "--" "=>" "|>" "<|" "||>" "<||"
-     "|||>" "<|||" ">>" "<<" "::=" "|]" "[|" "{|" "|}"
-     "[<" ">]" ":?>" ":?" "/=" "[||]" "!!" "?:" "?." "::"
-     "+++" "??" "###" "##" ":::" "####" ".?" "?=" "=!=" "<|>"
-     "<:" ":<" ":>" ">:" "<>" "***" ";;" "/==" ".=" ".-" "__"
-     "=/=" "<-<" "<<<" ">>>" "<=<" "<<=" "<==" "<==>" "==>" "=>>"
-     ">=>" ">>=" ">>-" ">-" "<~>" "-<" "-<<" "=<<" "---" "<-|"
-     "<=|" "/\\" "\\/" "|=>" "|~>" "<~~" "<~" "~~" "~~>" "~>"
-     "<$>" "<$" "$>" "<+>" "<+" "+>" "<*>" "<*" "*>" "</>" "</" "/>"
-     "<->" "..<" "~=" "~-" "-~" "~@" "^=" "-|" "_|_" "|-" "||-"
-     "|=" "||=" "#{" "#[" "]#" "#(" "#?" "#_" "#_(" "#:" "#!" "#="
-     "&="))
-
-(dolist (pat jetbrains-ligature-mode--ligatures)
-  (set-char-table-range composition-function-table
-                      (aref pat 0)
-                      (nconc (char-table-range composition-function-table (aref pat 0))
-                             (list (vector (regexp-quote pat)
-                                           0
-                                    'compose-gstring-for-graphic)))))

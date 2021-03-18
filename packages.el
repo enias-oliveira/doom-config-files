@@ -51,3 +51,6 @@
 
 
 (package! js-import)
+(package! indium)
+(package! prettier-js)
+(package! move-text)
